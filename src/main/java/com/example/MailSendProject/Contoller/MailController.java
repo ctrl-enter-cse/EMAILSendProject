@@ -20,6 +20,7 @@ public class MailController {
 	
 	@PostMapping("/sendmailText")
 	public String sendMailWithText(@RequestParam String to,@RequestParam String [] cc,@RequestParam String subject,@RequestParam String body ) {
+		System.out.println("in the controler : /sendmailText");
 		return mailservice.sendWithText(to,cc,subject,body);
 	}
 	
@@ -27,6 +28,7 @@ public class MailController {
 
 	@PostMapping("/sendmail")
 	public String sendMailWithFile( @RequestParam(value="file",required=false)MultipartFile[] file,@RequestParam String to,@RequestParam String [] cc,@RequestParam String subject,@RequestParam String body ) {
+		System.out.println("in the controler :  /sendmail");
 		return mailservice.send(file,to,cc,subject,body);
 	}
 

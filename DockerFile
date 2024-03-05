@@ -1,0 +1,8 @@
+FROM maven:3.8.3-openjdk-17 As build
+COPY . .
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17-jdk-slim
+COPY --from=build /target/MailSendProject-0.0.1-SANPSHOT.jar MailSendProject.jar
+EXPOSE  8081
+ENTRYPOINT [ "java","-jar","MailSendProject.jar" ]

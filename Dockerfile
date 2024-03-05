@@ -8,6 +8,8 @@
 #ENTRYPOINT [ "java","-jar","/mailsendproject.jar" ]
 
 FROM openjdk:17
+COPY . .
+RUN mvn clean package -DskipTests
 LABEL maintainer ="crt-enter-cse"
 ADD target/mailSenderProject.jar mailSenderProject.jar
 ENTRYPOINT ["java","-jar","mailSenderProject.jar"]

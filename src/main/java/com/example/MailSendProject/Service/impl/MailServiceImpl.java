@@ -3,6 +3,8 @@ package com.example.MailSendProject.Service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class MailServiceImpl implements MailService {
 	private JavaMailSender javaMailSender;
 	
 	private String Body ="Hi {name},\r\n"
-			+ "{body}\r\n"
+			+ "{body}\r\n\n\n\n"
 			+ "Just a quick note to say thank you for using email send project ! Your support means a lot.\r\n"
 			+ "If you have any questions or just want to connect, feel free to reach out to me:\r\n"
 			+ "•	Email: [parannacharaya@gmail.com]\r\n"
@@ -37,13 +39,15 @@ public class MailServiceImpl implements MailService {
 			+ "";
 	
 	@Override
-	public String send(MultipartFile[] file, String to,String [] cc, String subject, String body) {
+	public ResponseEntity<String> send(MultipartFile[] file, String to,String [] cc, String subject, String body) {
 		try {
 			
 			 MimeMessage mimeMessage =javaMailSender.createMimeMessage();
 			 MimeMessageHelper mimeMessageHelper= new MimeMessageHelper(mimeMessage,true);
 			 add(to,body);
+			 if(cc.length>0) {
 			 mimeMessageHelper.setCc(cc);
+			 }
 			 mimeMessageHelper.setTo(to);
 			 mimeMessageHelper.setFrom(emailFrom);
 			 mimeMessageHelper.setSubject(subject);
@@ -55,16 +59,19 @@ public class MailServiceImpl implements MailService {
 			 }	
 			 
 			 javaMailSender.send(mimeMessage);
-			  return "mail send";
+			 System.out.println("send");
+			 return new ResponseEntity<String>("mail send",HttpStatus.OK);
 		}catch (Exception e) {
-			System.out.println(e);
-			throw new RuntimeException("exception");
+			System.out.println(e.getMessage());
+			return new ResponseEntity<String>("mail send",HttpStatus.OK);
+//			throw new RuntimeException("exception");
+
 		}
-		
+
 	}
 
 	@Override
-	public String sendWithText(String to, String[] cc, String subject, String body) {
+	public ResponseEntity<String> sendWithText(String to, String[] cc, String subject, String body) {
 		
 		try{
 			MimeMessage mimeMessage= javaMailSender.createMimeMessage();
@@ -76,17 +83,18 @@ public class MailServiceImpl implements MailService {
 			mimeMessageHelper.setSubject(subject);
 			mimeMessageHelper.setFrom(emailFrom);
 			mimeMessageHelper.setText(Body);
-			mimeMessageHelper.setCc(cc);
+			 if(cc.length>0) {
+				 mimeMessageHelper.setCc(cc);
+				 }
 			javaMailSender.send(mimeMessage);
-			return "mail send";
-			
-			
+			return new ResponseEntity<String>("mail send",HttpStatus.OK);
 			
 		}catch (Exception e) {
 			System.out.println(e);
+			return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
 		}
 		
-		return null;
+//		return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	private String add(String to, String body) {

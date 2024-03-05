@@ -18,7 +18,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-		<groupId>org.springframework.boot</groupId>
+		<!-- <groupId>org.springframework.boot</groupId>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -43,6 +43,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>mailSenderProject</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

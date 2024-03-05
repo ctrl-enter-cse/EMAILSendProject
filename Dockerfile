@@ -1,6 +1,6 @@
-#FROM maven:3.8.3-openjdk-17 As build
-#COPY . .
-#RUN mvn clean package -DskipTests
+FROM maven:3.8.3-openjdk-17 As build
+COPY . .
+RUN mvn clean package -DskipTests
 
 
 
@@ -9,9 +9,9 @@
 #EXPOSE  8081
 #ENTRYPOINT [ "java","-jar","/mailsendproject.jar" ]
 
-FROM openjdk:17 As build
-COPY . .
-RUN mvn clean package -DskipTests
+#FROM maven:openjdk:17 As build
+#COPY . .
+#RUN mvn clean package -DskipTests
 
 
 FROM openjdk:17

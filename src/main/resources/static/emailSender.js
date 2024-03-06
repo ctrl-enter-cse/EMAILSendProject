@@ -12,6 +12,8 @@ document.getElementById('emailForm').addEventListener('submit', function(event) 
         // If no attachment, use sendmailText API
         sendWithoutAttachment(formData);
     }
+    
+    document.getElementById('emailForm').reset();
 });
 
 function sendWithAttachment(formData, attachment) {
@@ -22,7 +24,7 @@ function sendWithAttachment(formData, attachment) {
         body: formData
     })
     .then(response => {
-        if (response.ok) {
+        if (response.status==200) {
             document.getElementById('message').innerText = 'Email sent successfully.';
         } else {
             document.getElementById('message').innerText = 'Failed to send email. Please try again.';
@@ -39,7 +41,7 @@ function sendWithoutAttachment(formData) {
         body: formData
     })
     .then(response => {
-        if (response.ok) {
+        if (response.status==200) {
             document.getElementById('message').innerText = 'Email sent successfully.';
         } else {
             document.getElementById('message').innerText = 'Failed to send email. Please try again.';

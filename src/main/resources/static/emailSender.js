@@ -19,7 +19,7 @@ document.getElementById('emailForm').addEventListener('submit', function(event) 
 function sendWithAttachment(formData, attachment) {
     formData.append('file', attachment);
 
-    fetch('http://localhost:8080/home/sendmail', {
+    fetch('http://localhost:8081/home/sendmail', {
         method: 'POST',
         body: formData
     })
@@ -36,7 +36,7 @@ function sendWithAttachment(formData, attachment) {
 }
 
 function sendWithoutAttachment(formData) {
-    fetch('http://localhost:8080/home/sendmailText', {
+    fetch('http://localhost:8081/home/sendmailText', {
         method: 'POST',
         body: formData
     })

@@ -19,12 +19,12 @@ document.getElementById('emailForm').addEventListener('submit', function(event) 
 function sendWithAttachment(formData, attachment) {
     formData.append('file', attachment);
 
-    fetch('http://localhost:8081/home/sendmail', {
+    fetch('http://localhost:8080/home/sendmail', {
         method: 'POST',
         body: formData
     })
     .then(response => {
-        if (response.status==200) {
+        if (response.ok) {
             document.getElementById('message').innerText = 'Email sent successfully.';
         } else {
             document.getElementById('message').innerText = 'Failed to send email. Please try again.';
@@ -41,7 +41,7 @@ function sendWithoutAttachment(formData) {
         body: formData
     })
     .then(response => {
-        if (response.status==200) {
+        if (response.ok) {
             document.getElementById('message').innerText = 'Email sent successfully.';
         } else {
             document.getElementById('message').innerText = 'Failed to send email. Please try again.';

@@ -36,7 +36,7 @@ function sendWithAttachment(formData, attachment) {
 }
 
 function sendWithoutAttachment(formData) {
-    fetch('http://localhost:8081/home/sendmailText', {
+    fetch('http://localhost:8080/home/sendmailText', {
         method: 'POST',
         body: formData
     })

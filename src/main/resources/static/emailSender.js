@@ -36,8 +36,9 @@ function sendWithAttachment(formData, attachment) {
 }
 
 function sendWithoutAttachment(formData) {
+
     fetch('http://44.226.145.213/home/sendmailText', {
-        method: 'POST',
+ 	method: 'POST',
         body: formData
     })
     .then(response => {

@@ -22,7 +22,7 @@ function sendWithAttachment(formData, attachment) {
     fetch('https://emailsendproject.onrender.com/home/sendmail', {
         method: 'POST',
         body: formData
-    }).then(response => console.log(response.json())        
+    }).then(response => console.log(response.json()))        
     .then(response => {
         if (response.ok) {
             document.getElementById('message').innerText = 'Email sent successfully.';
@@ -40,7 +40,7 @@ function sendWithoutAttachment(formData) {
     fetch('https://emailsendproject.onrender.com/home/sendmailText', {
  	method: 'POST',
         body: formData
-    }).then(response => console.log(response.json())
+    }).then(response => console.log(response.json()))
     .then(response => {
         if (response.ok) {
             document.getElementById('message').innerText = 'Email sent successfully.';

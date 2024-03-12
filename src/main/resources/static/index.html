@@ -69,29 +69,28 @@
 </head>
 
 <body>
-	<div id="container">
-		<h1>Email Sender</h1>
-		<form id="emailForm" enctype="multipart/form-data">
-			<label for="to">To:</label>
-			<input type="text" id="to" name="to">
+    <div id="container">
+        <h1>Email Sender</h1>
+        <form id="emailForm" enctype="multipart/form-data">
+            <label for="to">To:</label>
+            <input type="text" id="to" name="to">
+            
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject">
+            
+            <label for="cc">CC:</label>
+            <input type="text" id="cc" name="cc">
+            
+            <label for="body">Body:</label>
+            <textarea id="body" name="body"></textarea>
+            
+            <label for="attachment">Attachment:</label>
+            <input type="file" id="attachment" name="attachment">
+            <p>Please upload a file with a size less than 10 MB.</p><br>
+            
+            <button type="submit">Send Email</button>
+        </form>
 
-			<label for="subject">Subject:</label>
-			<input type="text" id="subject" name="subject">
-
-			<label for="cc">CC:</label>
-			<input type="text" id="cc" name="cc">
-
-			<label for="body">Body:</label>
-			<textarea id="body" name="body"></textarea>
-
-			<label for="attachment">Attachment:</label>
-			<input type="file" id="attachment" name="attachment">
-			<p>Please upload a file with a size less than 10 MB.</p>
-			<!-- <span style="color: red; font-size: smaller;">Note: Larger files may take longer to upload and may exceed
-				the size limit.</span> -->
-			<br>
-			<button type="submit">Send Email</button>
-		</form>
 
 		<div id="message"></div>
 	</div>

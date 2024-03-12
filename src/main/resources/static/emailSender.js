@@ -19,10 +19,10 @@ document.getElementById('emailForm').addEventListener('submit', function(event) 
 function sendWithAttachment(formData, attachment) {
     formData.append('file', attachment);
 
-    fetch('http://44.226.145.213/home/sendmail', {
+    fetch('https://emailsendproject.onrender.com/home/sendmail', {
         method: 'POST',
         body: formData
-    })
+    }).then(response => console.log(response.json()))        
     .then(response => {
         if (response.ok) {
             document.getElementById('message').innerText = 'Email sent successfully.';
@@ -37,10 +37,10 @@ function sendWithAttachment(formData, attachment) {
 
 function sendWithoutAttachment(formData) {
 
-    fetch('http://44.226.145.213/home/sendmailText', {
+    fetch('https://emailsendproject.onrender.com/home/sendmailText', {
  	method: 'POST',
         body: formData
-    })
+    }).then(response => console.log(response.json()))
     .then(response => {
         if (response.ok) {
             document.getElementById('message').innerText = 'Email sent successfully.';

@@ -1,96 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Sender</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #333;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Email Sender</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #333;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
 
-        #emailForm {
-            background-color: #444;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
+		#emailForm {
+			background-color: #444;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		}
 
-        #emailForm label {
-            display: block;
-            margin-bottom: 5px;
-        }
+		#emailForm label {
+			display: block;
+			margin-bottom: 5px;
+		}
 
-        #emailForm input[type="text"],
-        #emailForm textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #777;
-            border-radius: 5px;
-            background-color: #555;
-            color: #fff;
-            box-sizing: border-box;
-        }
+		#emailForm input[type="text"],
+		#emailForm textarea {
+			width: 100%;
+			padding: 8px;
+			margin-bottom: 10px;
+			border: 1px solid #777;
+			border-radius: 5px;
+			background-color: #555;
+			color: #fff;
+			box-sizing: border-box;
+		}
 
-        #emailForm input[type="file"] {
-            width: 100%;
-            margin-bottom: 10px;
-        }
+		#emailForm input[type="file"] {
+			width: 100%;
+			margin-bottom: 10px;
+		}
 
-        #emailForm button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+		#emailForm button {
+			padding: 10px 20px;
+			background-color: #007bff;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
 
-        #emailForm button:hover {
-            background-color: #0056b3;
-        }
+		#emailForm button:hover {
+			background-color: #0056b3;
+		}
 
-        #message {
-            margin-top: 10px;
-            color: #ff6b6b;
-        }
-    </style>
+		#message {
+			margin-top: 10px;
+			color: #ff6b6b;
+		}
+	</style>
 </head>
+
 <body>
-    <div id="container">
-        <h1>Email Sender</h1>
-        <form id="emailForm" enctype="multipart/form-data">
-            <label for="to">To:</label>
-            <input type="text" id="to" name="to">
-            
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject">
-            
-            <label for="cc">CC:</label>
-            <input type="text" id="cc" name="cc">
-            
-            <label for="body">Body:</label>
-            <textarea id="body" name="body"></textarea>
-            
-            <label for="attachment">Attachment:</label>
-            <input type="file" id="attachment" name="attachment">
-            
-            <button type="submit">Send Email</button>
-        </form>
+	<div id="container">
+		<h1>Email Sender</h1>
+		<form id="emailForm" enctype="multipart/form-data">
+			<label for="to">To:</label>
+			<input type="text" id="to" name="to">
 
-        <div id="message"></div>
-    </div>
+			<label for="subject">Subject:</label>
+			<input type="text" id="subject" name="subject">
 
-    <script src="emailSender.js"></script>
+			<label for="cc">CC:</label>
+			<input type="text" id="cc" name="cc">
+
+			<label for="body">Body:</label>
+			<textarea id="body" name="body"></textarea>
+
+			<label for="attachment">Attachment:</label>
+			<input type="file" id="attachment" name="attachment">
+			<p>Please upload a file with a size less than 10 MB.</p>
+			<!-- <span style="color: red; font-size: smaller;">Note: Larger files may take longer to upload and may exceed
+				the size limit.</span> -->
+			<br>
+			<button type="submit">Send Email</button>
+		</form>
+
+		<div id="message"></div>
+	</div>
+
+	<script src="emailSender.js"></script>
 </body>
+
 </html>

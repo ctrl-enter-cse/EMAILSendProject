@@ -37,7 +37,7 @@ function sendWithAttachment(formData, attachment) {
 
 function sendWithoutAttachment(formData) {
 
-    fetch('http://emailsendproject.onrender.com/home/sendmailText', {
+    fetch('https://emailsendproject.onrender.com/home/sendmailText', {
  	method: 'POST',
         body: formData
     }).then(response => console.log(response.json())
